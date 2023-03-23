@@ -37,6 +37,11 @@ form.addEventListener('submit', (event) => {
   const budgetType = document.getElementById('budget-type').value;
   const budget = parseFloat(document.getElementById('budget').value);
 
+  if (isNaN(pricePer1k) || isNaN(budget)) {
+    results.textContent = 'Please enter valid numbers.';
+    return;
+  }
+
   let dailyBudget, monthlyBudget;
   if (budgetType === 'daily') {
     dailyBudget = budget;
@@ -60,6 +65,11 @@ additionalForm.addEventListener('submit', (event) => {
 
   const calcType = document.getElementById('calc-type').value;
   const calcValue = parseFloat(document.getElementById('calc-value').value);
+
+  if (isNaN(calcValue)) {
+    results.textContent = 'Please enter a valid number.';
+    return;
+  }
 
   let tokensPerMessage, messagesPerDay;
   if (calcType === 'tokens-per-message') {

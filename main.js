@@ -46,7 +46,7 @@ form.addEventListener('submit', (event) => {
     monthlyBudget = budget;
   }
 
-  tokenPriceCalculator(pricePer1k, dailyBudget, monthlyBudget);
+  [tokensPerDay, tokensPerMonth] = tokenPriceCalculator(pricePer1k, dailyBudget, monthlyBudget);
 
   const resultTokens = budgetType === 'daily' ? tokensPerDay : tokensPerMonth;
 

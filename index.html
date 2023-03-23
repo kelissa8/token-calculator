@@ -2,69 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="/manifest.json">
-    <title>Token Price Calculator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: lavender;
-            padding: 20px;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        input {
-            width: 100%;
-            padding: 8px;
-            font-size: 1rem;
-            box-sizing: border-box;
-        }
-        button {
-            background-color: yellow;
-            border: none;
-            padding: 10px;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-        p {
-            margin-bottom: 0;
-        }
-        .explanation {
-            font-size: 0.8rem;
-            margin-top: 4px;
-        }
-    </style>
+    <title>Token Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Token Price Calculator</h1>
     <form id="token-form">
-        <label>
-            <p>Enter price per 1k tokens (e.g. 0.002):</p>
-            <input type="text" id="price-per-1k" required>
-            <p class="explanation">API pricing can be found at <a href="https://openai.com/pricing" target="_blank">https://openai.com/pricing</a></p>
-        </label>
-        <label>
-            <p>Would you like to input a daily or monthly budget?</p>
-            <select id="budget-type" required>
-                <option value="daily">Daily</option>
-                <option value="monthly">Monthly</option>
-            </select>
-            <p class="explanation">Provide your budget based on the selected option (daily or monthly)</p>
-        </label>
-        <label>
-            <p>Enter budget:</p>
-            <input type="text" id="budget" required>
-        </label>
+        <label for="price-per-1k">Enter price per 1k tokens (e.g. 0.002):</label>
+        <input type="text" id="price-per-1k" required>
+        <p>The pricing for the API can be found <a href="https://openai.com/pricing" target="_blank">here</a>.</p>
+
+        <label for="budget-type">Would you like to input a daily or monthly budget?</label>
+        <select id="budget-type" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="daily">Daily</option>
+            <option value="monthly">Monthly</option>
+        </select>
+
+        <label for="budget">Enter budget:</label>
+        <input type="text" id="budget" required>
+        <p>Provide the monthly or daily budget based on the previous question.</p>
+
+        <button type="button" id="tokens-only">Tokens only</button>
         <button type="submit">Calculate</button>
     </form>
+
+    <div id="additional-questions" style="display: none;">
+        <label for="calc-type">Would you like to calculate the number of tokens per message or the number of messages per day?</label>
+        <select id="calc-type">
+            <option value="" disabled selected>Select an option</option>
+            <option value="tokens-per-message">Tokens per message</option>
+            <option value="messages-per-day">Messages per day</option>
+        </select>
+
+        <label for="calc-value">Enter value:</label>
+        <input type="text" id="calc-value">
+        <p>If you want to calculate messages per day, provide the number of tokens per message. If you want to calculate tokens per message, provide the number of messages per day.</p>
+    </div>
+
     <div id="results"></div>
-    <button onclick="location.href='https://ko-fi.com/lokik';">Donate</button>
-    <p><a href="https://platform.openai.com/tokenizer">Find out how many tokens text is</a></p>
-    <p>Note: The formula is for total messages and doesn't differentiate between user and bot messages.</p>
-    <script src="/main.js"></script>
+
+    <a href="https://ko-fi.com/lokik" class="donate-button" target="_blank">Donate</a>
+
+    <script src="main.js"></script>
 </body>
 </html>

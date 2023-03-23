@@ -1,0 +1,10 @@
+{
+  "name": "Token Calculator",
+  "short_name": "TokenCalc",
+  "description": "A simple PWA for calculating tokens and messages.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "lavender",
+  "theme_color": "lavender",
+  "icons": []
+}

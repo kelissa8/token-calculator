@@ -12,15 +12,18 @@ function tokenPriceCalculator(pricePer1k, dailyBudget = null, monthlyBudget = nu
 }
 
 function calculateMessages(tokens, tokensPerMessage = null, messagesPerDay = null) {
-  let messages;
-  if (tokensPerMessage !== null) {
+  let messages, calculatedTokensPerMessage;
+  if (tokensPerMessage !== null && !isNaN(tokensPerMessage)) {
     messages = tokens / tokensPerMessage;
-  } else {
-    tokensPerMessage = tokens / messagesPerDay;
+    calculatedTokensPerMessage = tokensPerMessage;
+  } else if (messagesPerDay !== null && !isNaN(messagesPerDay)) {
+    calculatedTokensPerMessage = tokens / messagesPerDay;
     messages = messagesPerDay;
+  } else {
+    throw new Error("Either tokensPerMessage or messagesPerDay must be provided and not NaN");
   }
 
-  return [messages, tokensPerMessage];
+  return [messages, calculatedTokensPerMessage];
 }
 
 const form = document.getElementById('token-form');

@@ -70,7 +70,8 @@ additionalForm.addEventListener('submit', (event) => {
     messagesPerDay = calcValue;
   }
 
-  const [messages, calculatedTokensPerMessage] = calculateMessages(tokensPerDay, tokensPerMessage, messagesPerDay);
+  const resultTokens = budgetType === 'daily' ? tokensPerDay : tokensPerMonth;
+const [messages, calculatedTokensPerMessage] = calculateMessages(resultTokens, tokensPerMessage, messagesPerDay);
 
   let resultText;
   if (calcType === 'tokens-per-message') {

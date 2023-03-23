@@ -17,18 +17,21 @@ function calculateMessages(tokens, tokensPerMessage = null, messagesPerDay = nul
     messages = tokens / tokensPerMessage;
   } else {
     tokensPerMessage = tokens / messagesPerDay;
-        messages = messagesPerDay;
+    messages = messagesPerDay;
   }
 
   return [messages, tokensPerMessage];
 }
 
 const form = document.getElementById('token-form');
-const tokensOnlyButton = document.getElementById('tokens-only');
+const additionalForm = document.getElementById('additional-form');
 const results = document.getElementById('results');
 const additionalQuestions = document.getElementById('additional-questions');
+const donateButton = document.getElementById('donate-button');
 
-tokensOnlyButton.addEventListener('click', () => {
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
   const pricePer1k = parseFloat(document.getElementById('price-per-1k').value);
   const budgetType = document.getElementById('budget-type').value;
   const budget = parseFloat(document.getElementById('budget').value);
@@ -45,30 +48,16 @@ tokensOnlyButton.addEventListener('click', () => {
   const [tokensPerDay, tokensPerMonth] = tokenPriceCalculator(pricePer1k, dailyBudget, monthlyBudget);
   const resultTokens = budgetType === 'daily' ? tokensPerDay : tokensPerMonth;
 
-  results.textContent = `Tokens: ${resultTokens}`;
-});
-
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
+  results.textContent = `Tokens: ${resultTokens.toFixed(2)}`;
 
   additionalQuestions.style.display = 'block';
+});
 
-  const pricePer1k = parseFloat(document.getElementById('price-per-1k').value);
-  const budgetType = document.getElementById('budget-type').value;
-  const budget = parseFloat(document.getElementById('budget').value);
+additionalForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
   const calcType = document.getElementById('calc-type').value;
   const calcValue = parseFloat(document.getElementById('calc-value').value);
-
-  let dailyBudget, monthlyBudget;
-  if (budgetType === 'daily') {
-    dailyBudget = budget;
-    monthlyBudget = null;
-  } else {
-    dailyBudget = null;
-    monthlyBudget = budget;
-  }
-
-  const [tokensPerDay, tokensPerMonth] = tokenPriceCalculator(pricePer1k, dailyBudget, monthlyBudget);
 
   let tokensPerMessage, messagesPerDay;
   if (calcType === 'tokens-per-message') {
@@ -83,10 +72,13 @@ form.addEventListener('submit', (event) => {
 
   let resultText;
   if (calcType === 'tokens-per-message') {
-    resultText = `Messages per day: ${messages}`;
+    resultText = `Messages per day: ${messages.toFixed(2)}`;
   } else {
-    resultText = `Tokens per message: ${calculatedTokensPerMessage}`;
+    resultText = `Tokens per message: ${calculatedTokensPerMessage.toFixed(2)}`;
   }
 
-  results.textContent = resultText;
-});
+  results.textContent += ` | ${resultText}`;
+
+  additionalForm;
+  }
+);

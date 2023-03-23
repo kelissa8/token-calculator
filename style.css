@@ -1,0 +1,53 @@
+body {
+  background-color: lavender;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.explanation {
+  font-size: 0.9em;
+  color: #777;
+}
+
+button {
+  display: block;
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: none;
+  font-size: 1em;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+#donate-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #ffdd00;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+#donate-button:hover {
+  background-color: #ffc800;
+}

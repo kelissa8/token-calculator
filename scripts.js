@@ -53,7 +53,7 @@ calculateButtons.forEach((button) => {
     const [tokensPerDay, tokensPerMonth] = tokenPriceCalculator(pricePer1k, dailyBudget, monthlyBudget);
 
     if (event.target === calculateButtons[0]) {
-      results.textContent = `Tokens per day: ${formatNumberWithCommas(tokensPerDay.toFixed(2))}\nTokens per month: ${formatNumberWithCommas(tokensPerMonth.toFixed(2))}`;
+      results.innerHTML = `Tokens per day: ${formatNumberWithCommas(tokensPerDay.toFixed(2))}<br>Tokens per month: ${formatNumberWithCommas(tokensPerMonth.toFixed(2))}`;
     } else {
       let tokensPerMessage, messagesPerDay;
       if (calcType === 'tokens-per-message') {

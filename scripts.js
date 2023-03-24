@@ -46,10 +46,10 @@ calculateButtons.forEach((button) => {
       monthlyBudget = budget;
     }
 
-    const [tokensPerDay] = tokenPriceCalculator(pricePer1k, dailyBudget, monthlyBudget);
+    const [tokensPerDay, tokensPerMonth] = tokenPriceCalculator(pricePer1k, dailyBudget, monthlyBudget);
 
     if (event.target === calculateButtons[0]) {
-      results.textContent = `Tokens per day: ${tokensPerDay.toFixed(2)}`;
+      results.textContent = `Tokens per day: ${tokensPerDay.toFixed(2)}, Tokens per month: ${tokensPerMonth.toFixed(2)}`;
     } else {
       let tokensPerMessage, messagesPerDay;
       if (calcType === 'tokens-per-message') {
@@ -64,8 +64,7 @@ calculateButtons.forEach((button) => {
 
       let resultText;
       if (calcType === 'tokens-per-message') {
-        resultText = `Messages per day: ${messages.toFixed(
-                2)}`;
+        resultText = `Messages per day: ${messages.toFixed(2)}`;
       } else {
         resultText = `Tokens per message: ${calculatedTokensPerMessage.toFixed(2)}`;
       }

@@ -83,3 +83,8 @@ small {
 .donate-button:hover {
     opacity: 1;
 }
+#price-results {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 1.2em;
+}

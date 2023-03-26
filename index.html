@@ -1,52 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Token Calculator</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="main-container">
-    <div class="container">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="container">
         <h1>Token Calculator</h1>
         <form id="token-form">
-            <div class="input-group">
-    <label for="price-per-1k">Price per 1k tokens:</label>
-    <input type="number" id="price-per-1k" step="0.01" required>
-    <small><a href="https://openai.com/pricing" target="_blank">View API's price per 1k tokens</a></small>
-    <small><a href="https://platform.openai.com/tokenizer" target="_blank">Token Counter</a></small>
-            </div>
-            <div class="input-group">
-                <label for="budget-type">Budget type:</label>
-                <select id="budget-type" required>
-                    <option value="daily">Daily</option>
-                    <option value="monthly">Monthly</option>
-                </select>
-            </div>
-            <div class="input-group">
-                <label for="budget">Budget:</label>
-                <input type="number" id="budget" step="0.01" required>
-            </div>
-            <button type="submit" class="calculate-button">Calculate tokens</button>
-            <div class="input-group">
-                <label for="calc-type">Calculation type:</label>
-                <select id="calc-type" required>
-                    <option value="tokens-per-message">Tokens per message</option>
-                    <option value="messages-per-day">Messages per day</option>
-                </select>
-            </div>
-            <div class="input-group">
-                <label for="calc-value">Enter value:</label>
-                <input type="number" id="calc-value" step="0.01" required>
-                <small>Example: when calculation type is messages per day and you enter value 50, it will give you the number of tokens per message when you make 50 messages a day.</small>
-            </div>
-            <button type="submit" class="calculate-button">Calculate messages</button>
+          <div class="input-group">
+            <label for="price-per-1k">Price per 1k tokens:</label>
+            <input type="number" id="price-per-1k" step="0.01" required />
+            <small
+              ><a href="https://openai.com/pricing" target="_blank"
+                >View API's price per 1k tokens</a
+              ></small
+            >
+            <small
+              ><a href="https://platform.openai.com/tokenizer" target="_blank"
+                >Token Counter</a
+              ></small
+            >
+          </div>
+          <div class="input-group">
+            <label for="budget-type">Budget type:</label>
+            <select id="budget-type" required>
+              <option value="daily">Daily</option>
+              <option value="monthly">Monthly</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="budget">Budget:</label>
+            <input type="number" id="budget" step="0.01" required />
+          </div>
+          <button type="submit" class="calculate-button">
+            Calculate tokens
+          </button>
+          <div class="input-group">
+            <label for="calc-type">Calculation type:</label>
+            <select id="calc-type" required>
+              <option value="tokens-per-message">Tokens per message</option>
+              <option value="messages-per-day">Messages per day</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="calc-value">Enter value:</label>
+            <input type="number" id="calc-value" step="0.01" required />
+            <small
+              >Example: when calculation type is messages per day and you
+              enter value 50, it will give you the number of tokens per message
+              when you make 50 messages a day.</small
+            >
+          </div>
+          <button type="submit" class="calculate-button">
+            Calculate messages
+          </button>
           <small>1 token is approximately 4 letters or .75 word</small>
         </form>
         <div id="results"></div>
+        <div class="input-group">
+          <label for="num-tokens">Number of tokens:</label>
+          <input type="number" id="num-tokens" step="0.01" required />
+        </div>
+        <button type="submit" class="calculate-button">
+          Calculate price
+        </button>
+        <div id="price-results"></div>
+      </div>
+      <a href="https://ko-fi.com/lokik" class="donate-button">Donate</a>
     </div>
-    <a href="https://ko-fi.com/lokik" class="donate-button">Donate</a>
     <script src="scripts.js"></script>
-</body>
+  </body>
 </html>

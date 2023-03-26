@@ -54,7 +54,7 @@ calculateButtons.forEach((button) => {
 
     if (event.target === calculateButtons[0]) {
       results.innerHTML = `Tokens per day: ${formatNumberWithCommas(tokensPerDay.toFixed(2))}<br>Tokens per month: ${formatNumberWithCommas(tokensPerMonth.toFixed(2))}`;
-    } else {
+    } else if (event.target === calculateButtons[1]) {
       let tokensPerMessage, messagesPerDay;
       if (calcType === 'tokens-per-message') {
         tokensPerMessage = calcValue;
@@ -74,6 +74,11 @@ calculateButtons.forEach((button) => {
       }
 
       results.textContent = resultText;
+    } else if (event.target === calculateButtons[2]) {
+      const numTokens = parseFloat(document.getElementById('num-tokens').value);
+      const totalPrice = pricePer1k * numTokens / 1000;
+      const priceResults = document.getElementById('price-results');
+      priceResults.textContent = `Total price: $${totalPrice.toFixed(2)}`;
     }
   });
 });
